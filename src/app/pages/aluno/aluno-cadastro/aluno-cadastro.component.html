@@ -12,30 +12,32 @@
   </div>
 
   <!-- Formulário de cadastro -->
-  <form #form="ngForm" autocomplete="off" (ngSubmit)="salvar()">
+  <form #form="ngForm" autocomplete="off" (ngSubmit)="cadastroAluno(form)">
     <div class="grid">
-      <!-- Campo Nome -->
-      <span class="col-12 mb-2">Nome</span>
-      <div class="col-12 md:col-6 lg:col-4">
-        <input pInputText name="nome" #nome="ngModel" [(ngModel)]="aluno.nome" required />
+      <!-- Campo Nome e CPF lado a lado -->
+      <div class="col-12 md:col-6">
+        <label for="nome">Nome</label>
+        <input pInputText id="nome" name="nome" #nome="ngModel" [(ngModel)]="aluno.nome" required class="w-full" />
       </div>
 
-      <!-- Campo CPF -->
-      <span class="col-12 mb-2 mt-3">CPF</span>
-      <div class="col-12 md:col-6 lg:col-4">
-        <input pInputText name="cpf" #cpf="ngModel" [(ngModel)]="aluno.cpf" required />
+      <div class="col-12 md:col-6">
+        <label for="cpf">CPF</label>
+        <input pInputText id="cpf" name="cpf" #cpf="ngModel" [(ngModel)]="aluno.cpf" required class="w-full" />
       </div>
 
-      <!-- Campo Status (Checkbox) -->
-      <span class="col-12 mb-2 mt-3">Status</span>
-      <div class="col-12 md:col-6 lg:col-4 flex align-items-center">
+      <!-- Campo Status -->
+      <div class="col-12 md:col-6 flex align-items-center mt-3">
         <p-checkbox name="status" [binary]="true" [(ngModel)]="aluno.status" inputId="status"></p-checkbox>
         <label for="status" class="ml-2">Ativo</label>
       </div>
 
-      <!-- Botão de salvar -->
-      <div class="col-12 mt-4">
-        <button pButton type="submit" label="Salvar" icon="pi pi-save"></button>
+      <!-- Botão de salvar alinhado à esquerda -->
+      <div class="flex flex-wrap col-12 mt-4">
+        <button pButton type="submit"
+          class="p-button p-button-raised"
+          label="Salvar"
+          icon="pi pi-save">
+        </button>
       </div>
     </div>
   </form>

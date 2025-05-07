@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DisciplinaModule } from './pages/disciplina/disciplina.module';
 import { PrimengModule } from './primeng.module';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CoreModule } from './pages/core/core.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +18,9 @@ import { PrimengModule } from './primeng.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     PrimengModule,
-    DisciplinaModule
+    DisciplinaModule,
+    NgxSpinnerModule,
+    CoreModule 
   ],
   providers: [
   ],

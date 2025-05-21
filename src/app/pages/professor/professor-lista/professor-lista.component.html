@@ -1,0 +1,24 @@
+<p-card header="Lista de Professores">
+  <button pButton label="Cadastrar" icon="pi pi-plus" routerLink="/professores/cadastro" class="mb-3"></button>
+
+  <p-table [value]="professores">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Status</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prof>
+      <tr>
+        <td>{{ prof.nome }}</td>
+        <td>{{ prof.cpf }}</td>
+        <td>
+          <span [ngClass]="prof.status ? 'text-green-500' : 'text-red-500'">
+            {{ prof.status ? 'Ativo' : 'Inativo' }}
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

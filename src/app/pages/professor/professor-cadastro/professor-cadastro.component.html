@@ -1,0 +1,28 @@
+<p-card header="{{editando ? 'Edição de' : 'Cadastro de'}} Professor">
+  <button pButton icon="pi pi-caret-left" label="Voltar" routerLink="/professores" class="mb-3"></button>
+
+  <form #form="ngForm" (ngSubmit)="salvar(form)">
+    <div class="grid">
+      <div class="col-12 md:col-6 lg:col-3">
+        <label>Nome</label>
+        <input pInputText name="nome" [(ngModel)]="professor.nome" required />
+      </div>
+      <div class="col-12 md:col-6 lg:col-3">
+        <label>CPF</label>
+        <input pInputText name="cpf" [(ngModel)]="professor.cpf" required />
+      </div>
+      <div class="col-12">
+        <label>Status</label>
+        <p-inputSwitch [ngModelOptions]="{standalone: true}" [(ngModel)]="professor.status" name="status"></p-inputSwitch>
+      </div>
+      <div class="col-12 mt-3">
+        <button pButton label="Salvar" type="submit" [disabled]="form.invalid || salvando"></button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="salvando" class="mt-2">
+    <p-progressSpinner [style]="{ width: '50px', height: '50px' }" strokeWidth="4"></p-progressSpinner>
+    <p>Salvando...</p>
+  </div>
+</p-card>

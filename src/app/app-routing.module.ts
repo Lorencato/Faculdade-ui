@@ -8,7 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   
- 
   {
     path: 'disciplinas',
     loadChildren: () => 
@@ -18,7 +17,12 @@ const routes: Routes = [
   {
     path: 'alunos',
     loadChildren: () => import('./pages/aluno/aluno.module').then(m => m.AlunoModule)
-  }
+  },
+
+  {
+  path: 'professores',
+  loadChildren: () => import('./pages/professor/professor.module').then(m => m.ProfessorModule)
+}
 ];
 
 @NgModule({

@@ -1,17 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ProfessorService } from '../professor.service';
-import { Professor } from '../../core/models/professor.model';
 
 @Component({
   selector: 'app-professor-lista',
-  templateUrl: './professor-lista.component.html'
+  templateUrl: './professor-lista.component.html',
+  styleUrls: ['./professor-lista.component.css']
 })
 export class ProfessorListaComponent implements OnInit {
-  professores: Professor[] = [];
 
-  constructor(private service: ProfessorService) {}
+  professores!: [];
+
+  constructor(
+    private professorService: ProfessorService,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit() {
-    this.service.listar().subscribe(dados => this.professores = dados);
+    this.carregarProfessores();
   }
+
+   carregarProfessores(){
+    this.spinner.show();
+    this.professorService.listar().then((obj) => {
+      this.professores = obj;
+      this.spinner.hide();
+    });
+
+  }
+
 }

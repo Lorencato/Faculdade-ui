@@ -7,6 +7,8 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
 
@@ -14,11 +16,13 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     ButtonModule,
     InputTextModule,
     CardModule,
-    CheckboxModule,
+    CheckboxModule, 
     TableModule,
     ToastModule,
     InputSwitchModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    OverlayPanelModule,
+    SidebarModule
   ]
 })
 export class PrimengModule { }

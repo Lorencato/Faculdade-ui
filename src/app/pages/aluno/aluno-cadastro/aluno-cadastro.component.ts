@@ -1,45 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { Aluno } from '../../core/models/aluno.model';
-import { AlunoService } from '../aluno.service';
+import { Component } from '@angular/core';
+import { Aluno } from '../../core/models/aluno.model'; // Importa o modelo
+import { AlunoService } from '../aluno.service'; // Importa o serviço
 
 @Component({
   selector: 'app-aluno-cadastro',
   templateUrl: './aluno-cadastro.component.html',
-  styleUrls: ['./aluno-cadastro.component.css']
 })
-export class AlunoCadastroComponent implements OnInit {
-   aluno = new Aluno();
-  constructor(
-    private alunoService: AlunoService,
-    private messageService: MessageService,
-    private router: Router
-  ) { }
 
-  ngOnInit() {
-  }
+export class AlunoCadastroComponent {
+  aluno: Aluno = new Aluno(); // Cria um objeto aluno vazio para o formulário
+salvando: any;
 
-  salvar(form: NgForm){
-    console.log(form);
-  }
+  constructor(private alunoService: AlunoService) {}
 
-  cadastroAluno(form: NgForm) {
-    console.log(this.aluno);
-    
-    // Chama o serviço (não retorna nada, então sem .then)
-    this.alunoService.adicionar(this.aluno);
-    
-    // Exibe mensagem de sucesso
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Aluno',
-      detail: 'Cadastrado com sucesso!'
-    });
-  
-    // Redireciona para a lista de alunos
-    this.router.navigate(['/alunos']);
+  // Quando o formulário for enviado
+  salvar() {
+    this.alunoService.adicionar(this.aluno); // Adiciona o novo aluno
+    alert('Aluno cadastrado com sucesso!');
+    this.aluno = new Aluno(); // Limpa o formulário
   }
-  
 }

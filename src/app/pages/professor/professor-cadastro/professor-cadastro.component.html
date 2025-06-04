@@ -1,28 +1,80 @@
-<p-card header="{{editando ? 'Edição de' : 'Cadastro de'}} Professor">
-  <button pButton icon="pi pi-caret-left" label="Voltar" routerLink="/professores" class="mb-3"></button>
-
-  <form #form="ngForm" (ngSubmit)="salvar(form)">
-    <div class="grid">
-      <div class="col-12 md:col-6 lg:col-3">
-        <label>Nome</label>
-        <input pInputText name="nome" [(ngModel)]="professor.nome" required />
-      </div>
-      <div class="col-12 md:col-6 lg:col-3">
-        <label>CPF</label>
-        <input pInputText name="cpf" [(ngModel)]="professor.cpf" required />
-      </div>
-      <div class="col-12">
-        <label>Status</label>
-        <p-inputSwitch [ngModelOptions]="{standalone: true}" [(ngModel)]="professor.status" name="status"></p-inputSwitch>
-      </div>
-      <div class="col-12 mt-3">
-        <button pButton label="Salvar" type="submit" [disabled]="form.invalid || salvando"></button>
-      </div>
+<div class="flex justify-content-center mt-8">
+  <p-card header="Cadastro de Professor" style="width: 800px;">
+    
+    <!-- Botão de voltar -->
+    <div class="mb-4">
+      <button 
+        pButton 
+        type="button"
+        class="p-button p-button-raised p-button-rounded"
+        icon="pi pi-caret-left"
+        pTooltip="Voltar"
+        tooltipPosition="top"
+        routerLink="/professores"
+      >
+        Voltar
+      </button>
     </div>
-  </form>
 
-  <div *ngIf="salvando" class="mt-2">
-    <p-progressSpinner [style]="{ width: '50px', height: '50px' }" strokeWidth="4"></p-progressSpinner>
-    <p>Salvando...</p>
-  </div>
-</p-card>
+    <!-- Formulário de cadastro -->
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="salvar(form)">
+      <div class="p-fluid">
+        
+        <!-- Campo Nome -->
+        <div class="mb-3">
+          <label for="nome" class="block mb-1 font-medium">Nome</label>
+          <input 
+            id="nome"
+            pInputText 
+            name="nome" 
+            #nome="ngModel" 
+            [(ngModel)]="professor.nome" 
+            required 
+          />
+        </div>
+
+        <!-- Campo CPF -->
+        <div class="mb-3">
+          <label for="cpf" class="block mb-1 font-medium">CPF</label>
+          <input 
+            id="cpf"
+            pInputText 
+            name="cpf" 
+            #cpf="ngModel" 
+            [(ngModel)]="professor.cpf" 
+            required 
+          />
+        </div>
+
+        <!-- Campo Status -->
+        <div class="mb-4 flex align-items-center">
+          <p-checkbox 
+            name="status" 
+            [(ngModel)]="professor.status" 
+            inputId="status">
+          </p-checkbox>
+          <label for="status" class="ml-2">Ativo</label>
+        </div>
+
+        <!-- Botão de salvar -->
+        <div class="text-right">
+          <button 
+            pButton 
+            type="submit" 
+            label="Salvar" 
+            icon="pi pi-save"
+            class="p-button-raised p-button-rounded"
+            class="p-button-rounded p-button-success w-full"
+          >
+          </button>
+        </div>
+
+      </div>
+    </form>
+    <!-- Spinner de carregamento -->
+    <div *ngIf="salvando" class="flex flex-column align-items-center mt-4">
+      <p-progressSpinner [style]="{ width: '50px', height: '50px' }" styleClass="custom-spinner" strokeWidth="5" animationDuration=".5s"></p-progressSpinner>
+      <h6 class="mt-2">Salvando, aguarde...</h6>
+    </div>
+  </p-card>
+</div>

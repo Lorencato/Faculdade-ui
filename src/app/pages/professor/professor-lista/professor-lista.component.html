@@ -1,24 +1,35 @@
+<div class="flex justify-content-center mt-8"></div>
 <p-card header="Lista de Professores">
-  <button pButton label="Cadastrar" icon="pi pi-plus" routerLink="/professores/cadastro" class="mb-3"></button>
+  <div class="flex flex-wrap col-12">
+    <button pButton class= "p-button-rounded"  icon="pi pi-plus" routerLink="novo" label="Novo"></button>
+  </div>
 
-  <p-table [value]="professores">
+  <p-table [value]="professores" styleClass="p-datatable-striped">
     <ng-template pTemplate="header">
       <tr>
         <th>Nome</th>
         <th>CPF</th>
         <th>Status</th>
+        <th>Data Criação</th>
+        <th>Usuário Criação</th>
+        <th>Data Alteração</th>
+        <th>Usuário Alteração</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-prof>
+    <ng-template pTemplate="body" let-professor>
       <tr>
-        <td>{{ prof.nome }}</td>
-        <td>{{ prof.cpf }}</td>
-        <td>
-          <span [ngClass]="prof.status ? 'text-green-500' : 'text-red-500'">
-            {{ prof.status ? 'Ativo' : 'Inativo' }}
-          </span>
-        </td>
+        <button pButton type="button" class="p-button-text p-button-warning"
+          ptooltip="Editar" icon="pi pi-pencil" tooltipPosition="top" 
+          [routerLink]="['/professores', professor.id]"></button>
+        <td>{{ professor.nome }}</td>
+        <td>{{ professor.cpf }}</td>
+        <td>{{ professor.status ? 'Ativo' : 'Inativo' }}</td>
+        <td>{{ professor.datacriacao * 1000| date : 'dd/MM/yyyy' }}</td>
+        <td>{{ professor.usucriacao }}</td>
+        <td>{{ professor.dataalteracao * 1000 | date : 'dd/MM/yyyy' }}</td>
+        <td>{{ professor.usualteracao }}</td>
       </tr>
     </ng-template>
+    
   </p-table>
 </p-card>

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'alunos',  // ou 'disciplinas', se quiser deixar disciplinas como padrão
+    redirectTo: 'disciplinas',  // ou 'disciplinas', se quiser deixar disciplinas como padrão
     pathMatch: 'full'
   },
   

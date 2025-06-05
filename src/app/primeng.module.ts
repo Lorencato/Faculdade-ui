@@ -1,28 +1,26 @@
 import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextModule } from 'primeng/inputtext';
-import {CheckboxModule} from 'primeng/checkbox';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SidebarModule } from 'primeng/sidebar';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { InputSwitchModule } from 'primeng/inputswitch';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
 
   exports: [
     ButtonModule,
     InputTextModule,
-    CardModule,
-    CheckboxModule, 
     TableModule,
+    CardModule,
     ToastModule,
     InputSwitchModule,
     ProgressSpinnerModule,
-    OverlayPanelModule,
-    SidebarModule
+    SidebarModule,
+    OverlayPanelModule
   ]
 })
 export class PrimengModule { }
